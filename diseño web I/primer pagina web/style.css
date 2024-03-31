@@ -1,0 +1,22 @@
+h1
+{
+    font-size: 1.6rem;  
+    color: purple;
+}
+
+p 
+{
+    font-size: .9rem;
+}
+
+button
+{
+    background-color: cadetblue;
+    color: white;
+    border: none;
+}
+
+img 
+{
+    width: 400px;
+}
