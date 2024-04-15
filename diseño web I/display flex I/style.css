@@ -1,0 +1,46 @@
+.contenedor 
+{
+    background-color:#303030 ;
+    height: 300px;
+    width: 300px;
+    margin: 3px;
+}
+
+.contenedor>div 
+{
+    height: 100px;
+    width: 100px;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid purple;
+    box-sizing: border-box;
+    color: #303030;
+}
+
+.contenedor_uno
+{
+    display: flex;
+}
+
+.contenedor_dos
+{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor_tres
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor_cuatro 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
