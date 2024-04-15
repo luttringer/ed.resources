@@ -1,0 +1,42 @@
+body {margin: 0}
+
+.menu_cont
+{
+    height:  90px;
+    width: 100%;
+    background-color: #303030;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.menu_cont>img 
+{
+    height: 90%;
+    filter: invert(1);
+}
+
+.menu_cont>ul 
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_cont>ul>li
+{
+    list-style: none;
+    font-family: monospace;
+    font-weight: 500;
+    color: #f2f2f2;
+    cursor: pointer;
+}
+
+
+
