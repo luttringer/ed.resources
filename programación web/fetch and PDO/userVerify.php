@@ -8,10 +8,10 @@
 
         try 
         {
-            $pdo = new PDO('mysql:host=127.0.0.1;dbname=usuarioSample', 'root', '');
+            $pdo = new PDO('mysql:host=mysql;dbname=usuarioSample', 'root', 'test');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare('SELECT COUNT(*) FROM usuario WHERE usuario = :usuario AND contrasena = :contrasena');
+            $stmt = $pdo->prepare('SELECT COUNT(*) FROM usuarios WHERE usuario = :usuario AND contrasena = :contrasena');
             $stmt->bindParam(':usuario', $usuario);
             $stmt->bindParam(':contrasena', $contrasena);
             $stmt->execute();

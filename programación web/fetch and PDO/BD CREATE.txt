@@ -1,0 +1,16 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS usuarioSample;
+USE usuarioSample;
+
+-- Crear la tabla usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL
+);
+
+-- Insertar datos de ejemplo en la tabla usuarios
+INSERT INTO usuarios (usuario, contrasena) VALUES
+('user1', 'password123'),
+('user2', 'password456'),
+('user3', 'password789');
