@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport' content='width=device-width, initial-scale=1.0">
+        <title>fetch JS intr.</title>
+    </head>
+    <body>
+        <main>
+            <button id="btn_one" onclick="fn_async('simple');">obtener dato simple</button>
+            <button id="btn_two" onclick="fn_async('json');">obtener array</button>
+
+            <h2>datos</h2>
+            <hr>
+            <p id="cont_datos"></p>
+        </main>
+    </body>
+</html>
+
+<script>
+
+    /*
+        documentacion: 
+        
+        -creo una funcion llamada fn_async la cual recibira como parametro un valor (simple o json) dependiendo desde que boton se la invoque.
+        -inmediatamente creo una variable vacia (donde se le cargara la direccion o url del archivo php del cual obtener datos) y una constante hacia un nodo <p> en el cual se le imprimira el resultado obtenido.
+        -mediante un switch condiciono que recibo en "sample" y dependiendo de ello asigno valor a url_php con la ruta del archivo php al que quiero consultar datos (o sea, si quiero que sea a un archivo u otro)
+        -realizo un fetch hacia la ruta establecida (cargada en la variable sample) y, si es simple la peticiion simplemente imprimo el resultado en el nodo p, mediante innerHTML (que permite insertar codigo como HTML)
+            sino, si creo un array sobre el objeto que me devuelve (un objeto en formato json) y lo recorro, imprimiendo datos en el nodo p en cada recorrida del array
+    */
+
+    const fn_async = (sample)=> 
+    {
+        let url_php;
+        const node_p = document.querySelector("#cont_datos");
+
+        switch(sample)
+        {
+            case 'simple': 
+                url_php = "simpleData.php";
+                break; 
+            case 'json': 
+                url_php = "jsonData.php";
+                break;
+        }
+    
+
+    fetch(url_php)
+        .then(response => 
+        {
+            if(!response.ok) throw new Error('error en la red');
+            if(sample == 'simple') return response.text(); else return response.json();
+        })
+        .then(data => 
+        {
+            if(sample == 'simple')
+            {
+                node_p.innerHTML = 'dato obtenido: ' + data;
+            }else 
+            {
+                let array_datos = Object.entries(data);
+                node_p.innerHTML = "";
+                array_datos.forEach(([k,v])=> 
+                {
+                    node_p.innerHTML += "key: " + k + ' <br> value: ' + v + '<br><br>';
+                })
+            }
+        })
+        .catch(error=>
+        {
+            console.log("error:" + error);
+        })
+    }
+</script>
