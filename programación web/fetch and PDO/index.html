@@ -11,6 +11,15 @@
     <button onclick="verificarUsuario()">Verificar</button>
 
     <script>
+
+         /*
+            documentacion: en este ejemplo tenemos dos input y un boton que dispara una funcion al hacersele click.
+                al correr la funcion "verificarUsuuario" se obtiene la propiedad value de cada nodo de html de los input. siguiente a ello se crea un formulario
+                de tipo FormData (formato que permite enviarse a archivos php, por ejemplo, como un cabezal, o sea, formulario). se le agregan (append) los dos datos obtenidos.
+                se lleva a cabo un fetch al archivo php "userVerify.php" y se le envia el formulario con el usuario y contraseña (por defecto va como method POST).
+                si existe una respuesta valida del servidor (el archivo), se levanta una respuesta json y se verifica si su data.exist (atributo que se configura en codigo php) es valido o no
+        */
+
         function verificarUsuario() 
         {
             const usuario = document.getElementById('usuario').value;
