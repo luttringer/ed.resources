@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Usuario</title>
+</head>
+<body>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="contrasena" placeholder="Contraseña">
+    <button onclick="verificarUsuario()">Verificar</button>
+
+    <script>
+        function verificarUsuario() 
+        {
+            const usuario = document.getElementById('usuario').value;
+            const contrasena = document.getElementById('contrasena').value;
+
+            let datos = new FormData();
+            datos.append('user', usuario);
+            datos.append('pass', contrasena);
+
+            fetch(`userVerify.php`, {method: 'POST', body: datos})
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        alert('Usuario y contraseña correctos');
+                    } else {
+                        alert('Usuario o contraseña incorrectos');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
